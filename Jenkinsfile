@@ -10,7 +10,9 @@ pipeline {
                 }
             }
             steps {
-                sh 'node -v'
+                sh '''
+                 node -v
+                 '''
             }
         }
 
