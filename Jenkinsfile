@@ -3,19 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Node Setup') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                }
-            }
-            steps {
-                sh '''
-                 node -v
-                 '''
-            }
-        }
-
         stage('AWS') {
             agent {
                 docker {
