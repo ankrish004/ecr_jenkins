@@ -1,7 +1,12 @@
 pipeline{
     agent any
     stages{
-        stage ('aws'){
+        agent {
+    docker {
+        image 'node:18-alpine'
+            }
+        }
+        stage ('aws') {
             agent {
                 docker {
                     image 'amazon/aws-cli:2.34.26'
