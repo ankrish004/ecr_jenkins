@@ -10,12 +10,15 @@ pipeline {
                     args "--entrypoint=''"
                 }
             }
+            environment {
+                AWS_S3_BUCKET = 'open-project-bucket-5352'
+            }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'aws-id', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
                 sh '''
                 aws --version
                 echo "hello world" >> index.html
-                aws s3 cp index.html s3://open-project-bucket-5352/index.html
+                aws s3 cp test.txt s3://$AWS_S3_BUCKET/test.txt
                 aws s3 ls
                 '''   
                 }
